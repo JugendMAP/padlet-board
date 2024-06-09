@@ -55,6 +55,17 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
+            justify-content: center;
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .top-bar a:first-child {
+            margin-right: auto;
+        }
+
+        .top-bar a:last-child {
+            margin-left: auto;
         }
 
         .top-bar a:hover {
@@ -66,6 +77,10 @@
             margin-right: 10px;
             width: 20px;
             height: 20px;
+        }
+
+        .top-bar a span {
+            white-space: nowrap;
         }
 
         iframe {
@@ -80,19 +95,65 @@
                 position: fixed;
                 bottom: 0;
                 width: 100%;
-                padding: 0 10px;
+                padding: 0 10px; /* Add padding to ensure the bar is spaced correctly */
                 justify-content: space-evenly;
                 z-index: 1000;
             }
 
             .top-bar a {
+                flex: 1;
                 margin: 5px;
                 padding: 8px 10px;
                 font-size: 14px;
+                display: flex;
+                justify-content: center;
+                height: auto;
+            }
+
+            .top-bar a svg {
+                margin: 0 5px 0 0;
+                width: 16px;
+                height: 16px;
+            }
+
+            .top-bar a span {
+                white-space: nowrap;
+            }
+
+            .top-bar a.last-button {
+                margin-right: 10px; /* Add margin-right for the last button */
             }
 
             iframe {
                 height: calc(100% - 50px);
+            }
+        }
+
+        @media (min-width: 600px) and (max-width: 1200px) {
+            .top-bar {
+                padding: 0 15px;
+            }
+
+            .top-bar a {
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+
+            .top-bar a svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .top-bar a {
+                padding: 10px 20px;
+                font-size: 18px;
+            }
+
+            .top-bar a svg {
+                width: 20px;
+                height: 20px;
             }
         }
 
@@ -117,11 +178,11 @@
 </head>
 <body>
     <header class="top-bar" aria-label="Navigation">
-        <a href="https://deinmg.de/stadtsommer/kalender/" aria-label="Veranstaltungen">
+        <a href="https://deinmg.de/stadtsommer/kalender/" aria-label="Veranstaltungen" class="nav-button">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="calendar" class="svg-inline--fa fa-calendar fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M148 288h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm96 0h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm96 0h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm32-192h-32v-20c0-6.6-5.4-12-12-12h-20c-6.6 0-12 5.4-12 12v20H148v-20c0-6.6-5.4-12-12-12h-20c-6.6 0-12 5.4-12 12v20H72c-39.8 0-72 32.2-72 72v272c0 39.8 32.2 72 72 72h304c39.8 0 72-32.2 72-72V168c0-39.8-32.2-72-72-72zm0 336H72c-13.2 0-24-10.8-24-24V256h352v152c0 13.2-10.8 24-24 24zm0-272H48v-48c0-13.2 10.8-24 24-24h32v20c0 6.6 5.4 12 12 12h20c6.6 0 12-5.4 12-12v-20h160v20c0 6.6 5.4 12 12 12h20c6.6 0 12-5.4 12-12v-20h32c13.2 0 24 10.8 24 24v48z"></path></svg>
             <span>Veranstaltungen</span>
         </a>
-        <a href="https://drive.google.com/file/d/1cS4natIrbf5g31pPj4iCO-B45kqK327t/view?usp=sharing" aria-label="FAQ">
+        <a href="https://drive.google.com/file/d/1cS4natIrbf5g31pPj4iCO-B45kqK327t/view?usp=sharing" aria-label="FAQ" class="nav-button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M9.09 9a3 3 0 1 1 5.82 1c-.21 1.22-1.52 2-2.41 3-.42.47-.69.99-.69 1.7v1"></path>
@@ -129,10 +190,9 @@
             </svg>
             <span>FAQ</span>
         </a>
-        <a href="https://drive.google.com/file/d/1FilsYf9hORkyd-74LKzF3YfFZZIcvEDd/view?usp=sharing" target="_blank" aria-label="Filter nach Aktivitäten">
+        <a href="https://drive.google.com/file/d/1FilsYf9hORkyd-74LKzF3YfFZZIcvEDd/view?usp=sharing" target="_blank" aria-label="Filter nach Aktivitäten" class="nav-button last-button">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="filter" class="svg-inline--fa fa-filter fa-w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor" d="M487.983 0H24.017C10.746 0 .007 10.74.007 24.006c0 6.133 2.355 12.116 6.634 16.701L192 241.181v209.312c0 9.708 5.365 18.634 14.034 23.077l104 56c7.287 3.92 16.094 3.538 22.966-.997s11.034-12.026 11.034-20.076V241.181l185.359-200.474c4.279-4.584 6.634-10.568 6.634-16.701C511.993 10.74 501.254 0 487.983 0z"></path>
-            </svg>
+                <path fill="currentColor" d="M487.983 0H24.017C10.746 0 .007 10.74.007 24.006c0 6.133 2.355 12.116 6.634 16.701L192 241.181v209.312c0 9.708 5.365 18.634 14.034 23.077l104 56c7.287 3.92 16.094 3.538 22.966-.997s11.034-12.026 11.034-20.076V241.181l185.359-200.474c4.279-4.584 6.634-10.568 6.634-16.701C511.993 10.74 501.254 0 487.983 0z"></path></svg>
             <span>Filter nach Aktivitäten</span>
         </a>
     </header>
