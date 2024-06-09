@@ -31,37 +31,27 @@
             color: white;
             text-align: center;
             padding: 10px;
-            flex: 0 0 40px;
+            height: 40px;
+            flex-shrink: 0;
         }
 
         /* Style the iframe to take up the remaining height */
         iframe {
             border: none;
             width: 100%;
-            height: calc(100% - 40px); /* Adjust height to account for the top bar */
-            flex: 1 1 auto;
+            flex-grow: 1;
         }
 
         /* Responsive adjustments */
         @media (max-width: 600px) {
             html, body {
-                height: 100%;
                 flex-direction: column-reverse;
-            }
-
-            iframe {
-                height: calc(100% - 40px); /* Adjust height to account for the bottom bar */
-            }
-
-            .top-bar {
-                order: 1;
-                flex: 0 0 40px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">JugendMAP</div>
     <iframe src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e"></iframe>
+    <div class="top-bar">JugendMAP</div>
 </body>
 </html>
