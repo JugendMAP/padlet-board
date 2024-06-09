@@ -28,7 +28,7 @@
             background-color: #333;
             color: white;
             padding: 10px;
-            height: 30px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -39,11 +39,15 @@
         .top-bar span {
             display: flex;
             align-items: center;
-            margin-right: 27%; /* Move the text closer to the center */
+            margin-right: 27%;
         }
 
         .top-bar .arrow {
             margin-left: 10px;
+        }
+
+        .top-bar .arrow::before {
+            content: '\2193'; /* Unicode for downward arrow */
         }
 
         iframe {
@@ -60,10 +64,13 @@
                 padding-right: 0;
             }
 
-            .top-bar .arrow {
+            .top-bar span {
+                margin-right: 0; /* Reset margin-right for mobile */
+            }
+
+            .top-bar .arrow::before {
                 content: '\2191'; /* Unicode for upward arrow */
-                margin-left: 10px; /* Ensure space between text and arrow */
-                margin-right: 0;
+                margin-left: 10px;
             }
 
             iframe {
@@ -77,7 +84,7 @@
     <div class="top-bar" aria-label="Filterleiste">
         <span>
             Filter nach Aktivitäten
-            <span class="arrow" aria-hidden="true">&#x2193;</span>
+            <span class="arrow" aria-hidden="true"></span>
         </span>
     </div>
     <iframe src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e" title="Padlet Board"></iframe>
