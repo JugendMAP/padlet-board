@@ -27,27 +27,27 @@
         .top-bar {
             background-color: #333;
             color: white;
-            padding: 10px;
             height: 40px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            padding-right: 20px;
+            justify-content: space-between;
+            padding: 0 20px;
             flex-shrink: 0;
+            flex-wrap: nowrap; /* Ensure items do not wrap */
         }
 
-        .top-bar span {
-            display: flex;
-            align-items: center;
-            margin-right: 27%;
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #444;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            flex: 0 1 auto; /* Ensure buttons are sized appropriately */
         }
 
-        .top-bar .arrow {
-            margin-left: 10px;
-        }
-
-        .top-bar .arrow::before {
-            content: '\2193'; /* Unicode for downward arrow */
+        .top-bar a:hover {
+            background-color: #555;
         }
 
         iframe {
@@ -58,34 +58,31 @@
 
         @media (max-width: 600px) {
             .top-bar {
-                order: 2;
-                justify-content: center;
-                padding-left: 0;
-                padding-right: 0;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding: 0 10px;
+                justify-content: space-evenly;
+                background-color: #333;
+                z-index: 1000; /* Ensure the bar stays above other content */
             }
 
-            .top-bar span {
-                margin-right: 0; /* Reset margin-right for mobile */
-            }
-
-            .top-bar .arrow::before {
-                content: '\2191'; /* Unicode for upward arrow */
-                margin-left: 10px;
+            .top-bar a {
+                margin: 5px;
+                padding: 8px 10px; /* Reduce padding for smaller screens */
             }
 
             iframe {
-                order: 1;
-                height: calc(100% - 40px);
+                height: calc(100% - 40px); /* Adjust height to account for the bottom bar */
             }
         }
     </style>
 </head>
 <body>
-    <div class="top-bar" aria-label="Filterleiste">
-        <span>
-            Filter nach Aktivitäten
-            <span class="arrow" aria-hidden="true"></span>
-        </span>
+    <div class="top-bar" aria-label="Navigation">
+        <a href="https://deinmg.de/stadtsommer/kalender/">Veranstaltungen</a>
+        <a href="https://drive.google.com/file/d/1cS4natIrbf5g31pPj4iCO-B45kqK327t/view?usp=drive_linkk">FAQ</a>
+        <a href="https://drive.google.com/file/d/1FilsYf9hORkyd-74LKzF3YfFZZIcvEDd/view?usp=drive_link" target="_blank">Filter nach Aktivitäten</a>
     </div>
     <iframe src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e" title="Padlet Board"></iframe>
 </body>
