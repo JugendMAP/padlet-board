@@ -31,7 +31,7 @@
             color: white;
             text-align: center;
             padding: 10px;
-            flex: 0 0 auto;
+            flex: 0 0 40px;
         }
 
         /* Style the iframe to take up the remaining height */
@@ -46,19 +46,16 @@
         @media (max-width: 600px) {
             html, body {
                 height: 100%;
-                flex-direction: column;
+                flex-direction: column-reverse;
             }
 
             iframe {
-                height: calc(100% - 50px); /* Adjust height to account for the top bar */
+                height: calc(100% - 40px); /* Adjust height to account for the bottom bar */
             }
 
             .top-bar {
                 order: 1;
-                flex: 0 0 50px; /* Ensure the top bar height is considered */
-                position: absolute;
-                bottom: 0;
-                width: 100%;
+                flex: 0 0 40px;
             }
         }
     </style>
