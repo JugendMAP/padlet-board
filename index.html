@@ -53,10 +53,6 @@
             padding: 0 var(--padding-horizontal);
             flex-shrink: 0;
             box-shadow: var(--box-shadow);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
         }
 
         .top-bar a {
@@ -100,14 +96,18 @@
         iframe {
             border: none;
             width: 100%;
-            height: calc(100vh - var(--top-bar-height));
-            margin-top: var(--top-bar-height);
             flex-grow: 1;
             loading: lazy;
         }
 
         @media (max-width: 600px) {
             .top-bar {
+                position: fixed;
+                bottom: 0; /* Position the bar at the bottom */
+                width: 100%;
+                padding: 0 10px;
+                justify-content: space-between;
+                z-index: 1000;
                 height: var(--top-bar-height);
             }
 
@@ -133,6 +133,10 @@
 
             .top-bar a:last-child {
                 margin-right: 20px;
+            }
+
+            iframe {
+                height: calc(100vh - var(--top-bar-height));
             }
         }
 
@@ -170,7 +174,11 @@
             const iframe = document.querySelector('iframe');
             const topBarHeight = topBar.offsetHeight;
             iframe.style.height = `calc(100vh - ${topBarHeight}px)`;
-            iframe.style.marginTop = `${topBarHeight}px`;
+            if (window.innerWidth <= 600) {
+                iframe.style.marginBottom = `${topBarHeight}px`;
+            } else {
+                iframe.style.marginBottom = '0';
+            }
         }
 
         window.addEventListener('resize', adjustIframeHeight);
