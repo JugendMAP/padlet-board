@@ -44,14 +44,19 @@
 
         /* Responsive adjustments */
         @media (max-width: 600px) {
-            html, body {
-                flex-direction: column-reverse;
+            .top-bar {
+                order: 2;
+            }
+
+            iframe {
+                order: 1;
+                height: calc(100% - 40px); /* Adjust height to account for the bottom bar */
             }
         }
     </style>
 </head>
 <body>
-    <iframe src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e"></iframe>
     <div class="top-bar">JugendMAP</div>
+    <iframe src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e"></iframe>
 </body>
 </html>
