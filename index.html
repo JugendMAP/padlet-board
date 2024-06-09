@@ -161,24 +161,6 @@
                 height: 20px;
             }
         }
-
-        .scroll-to-top {
-            position: fixed;
-            bottom: 70px;
-            right: 20px;
-            background-color: var(--main-bg-color);
-            color: var(--white-color);
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: none;
-            z-index: 1001;
-            transition: var(--transition);
-        }
-
-        .scroll-to-top:hover {
-            background-color: var(--hover-bg-color);
-        }
     </style>
 </head>
 <body>
@@ -202,14 +184,5 @@
         </a>
     </header>
     <iframe loading="lazy" src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e" title="Padlet Board"></iframe>
-    <div class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" aria-label="Scroll to Top">
-        Nach oben
-    </div>
-
-    <script>
-        window.addEventListener('scroll', function() {
-            document.querySelector('.scroll-to-top').style.display = window.scrollY > 100 ? 'block' : 'none';
-        });
-    </script>
 </body>
 </html>
