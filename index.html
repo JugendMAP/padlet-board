@@ -23,6 +23,15 @@
             --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             --padding-horizontal: 20px;
             --transition: background-color 0.3s ease, transform 0.3s ease;
+            --top-bar-height: 50px;
+            --font-size-default: 14px;
+            --font-size-mobile: 12px;
+            --font-size-medium: 16px;
+            --font-size-large: 18px;
+            --svg-width-default: 20px;
+            --svg-width-mobile: 16px;
+            --svg-width-medium: 18px;
+            --svg-width-large: 20px;
         }
 
         html, body {
@@ -37,7 +46,7 @@
         .top-bar {
             background-color: var(--main-bg-color);
             color: var(--white-color);
-            height: 50px;
+            height: var(--top-bar-height);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -58,7 +67,7 @@
             justify-content: center;
             height: 50px;
             box-sizing: border-box;
-            font-size: 14px; /* Default font size */
+            font-size: var(--font-size-default);
         }
 
         .top-bar a:first-child {
@@ -76,8 +85,8 @@
 
         .top-bar a svg {
             margin-right: 10px;
-            width: 20px;
-            height: 20px;
+            width: var(--svg-width-default);
+            height: var(--svg-width-default);
         }
 
         .top-bar a span {
@@ -96,16 +105,17 @@
                 position: fixed;
                 bottom: 0;
                 width: 100%;
-                padding: 0 10px; /* Add padding to ensure the bar is spaced correctly */
+                padding: 0 10px;
                 justify-content: space-between;
                 z-index: 1000;
+                height: var(--top-bar-height);
             }
 
             .top-bar a {
                 flex: 1;
                 margin: 5px;
                 padding: 8px 10px;
-                font-size: 12px; /* Smaller font size for mobile */
+                font-size: var(--font-size-mobile);
                 display: flex;
                 justify-content: center;
                 height: auto;
@@ -113,24 +123,16 @@
 
             .top-bar a svg {
                 margin: 0 5px 0 0;
-                width: 16px;
-                height: 16px;
-            }
-
-            .top-bar a span {
-                white-space: nowrap;
+                width: var(--svg-width-mobile);
+                height: var(--svg-width-mobile);
             }
 
             .top-bar a:first-child {
-                margin-left: 0px; /* Ensure the first button has margin-left */
+                margin-left: 0px;
             }
 
             .top-bar a:last-child {
-                margin-right: 20px; /* Ensure the last button has margin-right */
-            }
-
-            iframe {
-                height: calc(100% - 50px);
+                margin-right: 20px;
             }
         }
 
@@ -141,27 +143,41 @@
 
             .top-bar a {
                 padding: 10px 15px;
-                font-size: 16px;
+                font-size: var(--font-size-medium);
             }
 
             .top-bar a svg {
-                width: 18px;
-                height: 18px;
+                width: var(--svg-width-medium);
+                height: var(--svg-width-medium);
             }
         }
 
         @media (min-width: 1200px) {
             .top-bar a {
                 padding: 10px 20px;
-                font-size: 18px;
+                font-size: var(--font-size-large);
             }
 
             .top-bar a svg {
-                width: 20px;
-                height: 20px;
+                width: var(--svg-width-large);
+                height: var(--svg-width-large);
             }
         }
     </style>
+    <script>
+    function adjustIframeHeight() {
+        const topBar = document.querySelector('.top-bar');
+        const iframe = document.querySelector('iframe');
+        const topBarHeight = topBar.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const iframeBottom = iframe.getBoundingClientRect().bottom;
+        const newHeight = windowHeight - topBarHeight - (windowHeight - iframeBottom);
+        iframe.style.height = `${newHeight}px`;
+    }
+
+    window.addEventListener('resize', adjustIframeHeight);
+    window.addEventListener('DOMContentLoaded', adjustIframeHeight);
+</script>
 </head>
 <body>
     <header class="top-bar" aria-label="Navigation">
