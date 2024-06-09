@@ -53,6 +53,10 @@
             padding: 0 var(--padding-horizontal);
             flex-shrink: 0;
             box-shadow: var(--box-shadow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         .top-bar a {
@@ -96,18 +100,14 @@
         iframe {
             border: none;
             width: 100%;
+            height: calc(100vh - var(--top-bar-height));
+            margin-top: var(--top-bar-height);
             flex-grow: 1;
             loading: lazy;
         }
 
         @media (max-width: 600px) {
             .top-bar {
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                padding: 0 10px;
-                justify-content: space-between;
-                z-index: 1000;
                 height: var(--top-bar-height);
             }
 
@@ -165,19 +165,17 @@
         }
     </style>
     <script>
-    function adjustIframeHeight() {
-        const topBar = document.querySelector('.top-bar');
-        const iframe = document.querySelector('iframe');
-        const topBarHeight = topBar.offsetHeight;
-        const windowHeight = window.innerHeight;
-        const iframeBottom = iframe.getBoundingClientRect().bottom;
-        const newHeight = windowHeight - topBarHeight - (windowHeight - iframeBottom);
-        iframe.style.height = `${newHeight}px`;
-    }
+        function adjustIframeHeight() {
+            const topBar = document.querySelector('.top-bar');
+            const iframe = document.querySelector('iframe');
+            const topBarHeight = topBar.offsetHeight;
+            iframe.style.height = `calc(100vh - ${topBarHeight}px)`;
+            iframe.style.marginTop = `${topBarHeight}px`;
+        }
 
-    window.addEventListener('resize', adjustIframeHeight);
-    window.addEventListener('DOMContentLoaded', adjustIframeHeight);
-</script>
+        window.addEventListener('resize', adjustIframeHeight);
+        window.addEventListener('DOMContentLoaded', adjustIframeHeight);
+    </script>
 </head>
 <body>
     <header class="top-bar" aria-label="Navigation">
