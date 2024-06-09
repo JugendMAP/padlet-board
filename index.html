@@ -58,6 +58,7 @@
             justify-content: center;
             height: 50px;
             box-sizing: border-box;
+            font-size: 14px; /* Default font size */
         }
 
         .top-bar a:first-child {
@@ -96,7 +97,7 @@
                 bottom: 0;
                 width: 100%;
                 padding: 0 10px; /* Add padding to ensure the bar is spaced correctly */
-                justify-content: space-evenly;
+                justify-content: space-between;
                 z-index: 1000;
             }
 
@@ -104,7 +105,7 @@
                 flex: 1;
                 margin: 5px;
                 padding: 8px 10px;
-                font-size: 14px;
+                font-size: 12px; /* Smaller font size for mobile */
                 display: flex;
                 justify-content: center;
                 height: auto;
@@ -120,8 +121,12 @@
                 white-space: nowrap;
             }
 
-            .top-bar a.last-button {
-                margin-right: 10px; /* Add margin-right for the last button */
+            .top-bar a:first-child {
+                margin-left: 0px; /* Ensure the first button has margin-left */
+            }
+
+            .top-bar a:last-child {
+                margin-right: 20px; /* Ensure the last button has margin-right */
             }
 
             iframe {
