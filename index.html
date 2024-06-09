@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,6 @@
     </script>
 
     <style>
-        /* Ensure the body and html elements take up full height */
         html, body {
             margin: 0;
             padding: 0;
@@ -25,38 +24,62 @@
             flex-direction: column;
         }
 
-        /* Style for the top bar */
         .top-bar {
             background-color: #333;
             color: white;
-            text-align: center;
             padding: 10px;
-            height: 40px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 20px;
             flex-shrink: 0;
         }
 
-        /* Style the iframe to take up the remaining height */
+        .top-bar span {
+            display: flex;
+            align-items: center;
+            margin-right: 27%; /* Move the text closer to the center */
+        }
+
+        .top-bar .arrow {
+            margin-left: 10px;
+        }
+
         iframe {
             border: none;
             width: 100%;
             flex-grow: 1;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 600px) {
             .top-bar {
                 order: 2;
+                justify-content: center;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .top-bar .arrow {
+                content: '\2191'; /* Unicode for upward arrow */
+                margin-left: 10px; /* Ensure space between text and arrow */
+                margin-right: 0;
             }
 
             iframe {
                 order: 1;
-                height: calc(100% - 40px); /* Adjust height to account for the bottom bar */
+                height: calc(100% - 40px);
             }
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">JugendMAP</div>
-    <iframe src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e"></iframe>
+    <div class="top-bar" aria-label="Filterleiste">
+        <span>
+            Filter nach Aktivitäten
+            <span class="arrow" aria-hidden="true">&#x2193;</span>
+        </span>
+    </div>
+    <iframe src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e" title="Padlet Board"></iframe>
 </body>
 </html>
