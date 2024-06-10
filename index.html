@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iframe Padlet Board</title>
 
-    <!-- PIWIK tag -->
+    <!-- PIWIK Tag -->
     <script type="text/javascript">
         (function(window, document, dataLayerName, id) {
             window[dataLayerName]=window[dataLayerName]||[],window[dataLayerName].push({start:(new Date).getTime(),event:"stg.start"});
@@ -112,7 +112,7 @@
         @media (max-width: 600px) {
             .top-bar {
                 position: fixed;
-                bottom: 0; /* Position the bar at the bottom */
+                bottom: 0;
                 width: 100%;
                 padding: 0 10px;
                 justify-content: space-between;
@@ -179,15 +179,10 @@
     </style>
     <script>
         function adjustIframeHeight() {
-            const topBar = document.querySelector('.top-bar');
+            const topBarHeight = document.querySelector('.top-bar').offsetHeight;
             const iframe = document.querySelector('iframe');
-            const topBarHeight = topBar.offsetHeight;
             iframe.style.height = `calc(100vh - ${topBarHeight}px)`;
-            if (window.innerWidth <= 600) {
-                iframe.style.marginBottom = `${topBarHeight}px`;
-            } else {
-                iframe.style.marginBottom = '0';
-            }
+            iframe.style.marginBottom = window.innerWidth <= 600 ? `${topBarHeight}px` : '0';
         }
 
         window.addEventListener('resize', adjustIframeHeight);
@@ -197,26 +192,26 @@
 <body>
     <header class="top-bar" aria-label="Navigation">
         <a href="https://deinmg.de/stadtsommer/kalender/" aria-label="Veranstaltungen" class="nav-button" target="_blank">
-            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="calendar" class="svg-inline--fa fa-calendar fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M148 288h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm96 0h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm96 0h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm32-192h-32v-20c0-6.6-5.4-12-12-12h-20c-6.6 0-12 5.4-12 12v20H148v-20c0-6.6-5.4-12-12-12h-20c-6.6 0-12 5.4-12 12v20H72c-39.8 0-72 32.2-72 72v272c0 39.8 32.2 72 72 72h304c39.8 0 72-32.2 72-72V168c0-39.8-32.2-72-72-72zm0 336H72c-13.2 0-24-10.8-24-24V256h352v152c0 13.2-
-24-10.8 24-24zm0-272H48v-48c0-13.2 10.8-24 24-24h32v20c0 6.6 5.4 12 12 12h20c6.6 0 12-5.4 12-12v-20h160v20c0 6.6 5.4 12 12 12h20c6.6 0 12-5.4 12-12v-20h32c13.2 0 24 10.8 24 24v48z"></path></svg>
-<span>Veranstaltungen</span>
-</a>
-<a href="https://drive.google.com/file/d/1cS4natIrbf5g31pPj4iCO-B45kqK327t/view?usp=sharing" aria-label="FAQ" class="nav-button" target="_blank">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
-<circle cx="12" cy="12" r="10"></circle>
-<path d="M9.09 9a3 3 0 1 1 5.82 1c-.21 1.22-1.52 2-2.41 3-.42.47-.69.99-.69 1.7v1"></path>
-<line x1="12" y1="17" x2="12" y2="17"></line>
-</svg>
-<span>FAQ</span>
-</a>
-<a href="https://drive.google.com/file/d/1FilsYf9hORkyd-74LKzF3YfFZZIcvEDd/view?usp=sharing" target="_blank" aria-label="Filter nach Aktivitäten" class="nav-button last-button">
-<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="filter" class="svg-inline--fa fa-filter fa-w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-<path fill="currentColor" d="M487.983 0H24.017C10.746 0 .007 10.74.007 24.006c0 6.133 2.355 12.116 6.634 16.701L192 241.181v209.312c0 9.708 5.365 18.634 14.034 23.077l104 56c7.287 3.92 16.094 3.538 22.966-.997s11.034-12.026 11.034-20.076V241.181l185.359-200.474c4.279-4.584 6.634-10.568 6.634-16.701C511.993 10.74 501.254 0 487.983 0z"></path>
-</svg>
-<span>Filter nach Aktivitäten</span>
-</a>
-</header>
-<iframe loading="lazy" src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e" title="Padlet Board"></iframe>
-
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="calendar" class="svg-inline--fa fa-calendar fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M148 288h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm96 0h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm96 0h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12zm32-192h-32v-20c0-6.6-5.4-12-12-12h-20c-6.6 0-12 5.4-12 12v20H148v-20c0-6.6-5.4-12-12-12h-20c-6.6 0-12 5.4-12 12v20H72c-39.8 0-72 32.2-72 72v272c0 39.8 32.2 72 72 72h304c39.8 0 72-32.2 72-72V168c0-39.8-32.2-72-72-72zm0 336H72c-13.2 0-24-10.8-24-24V256h352v152c0 13.2-10.8 24-24 24zm0-272H48v-48c0-13.2 10.8-24 24-24h32v20c0 6.6 5.4 12 12 12h20c6.6 0 12-5.4 12-12v-20h160v20c0 6.6 5.4 12 12 12h20c6.6 0 12-5.4 12-12v-20h32c13.2 0 24 10.8 24 24v48z"></path>
+            </svg>
+            <span>Veranstaltungen</span>
+        </a>
+        <a href="https://drive.google.com/file/d/1cS4natIrbf5g31pPj4iCO-B45kqK327t/view?usp=sharing" aria-label="FAQ" class="nav-button" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 1 1 5.82 1c-.21 1.22-1.52 2-2.41 3-.42.47-.69.99-.69 1.7v1"></path>
+                <line x1="12" y1="17" x2="12" y2="17"></line>
+            </svg>
+            <span>FAQ</span>
+        </a>
+        <a href="https://drive.google.com/file/d/1FilsYf9hORkyd-74LKzF3YfFZZIcvEDd/view?usp=sharing" target="_blank" aria-label="Filter nach Aktivitäten" class="nav-button last-button">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="filter" class="svg-inline--fa fa-filter fa-w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="currentColor" d="M487.983 0H24.017C10.746 0 .007 10.74.007 24.006c0 6.133 2.355 12.116 6.634 16.701L192 241.181v209.312c0 9.708 5.365 18.634 14.034 23.077l104 56c7.287 3.92 16.094 3.538 22.966-.997s11.034-12.026 11.034-20.076V241.181l185.359-200.474c4.279-4.584 6.634-10.568 6.634-16.701C511.993 10.74 501.254 0 487.983 0z"></path>
+            </svg>
+            <span>Filter nach Aktivitäten</span>
+        </a>
+    </header>
+    <iframe loading="lazy" src="https://padlet.com/YouthBeyond/jugendmap-mk1df9f28c4j3o4e" title="Padlet Board"></iframe>
 </body>
 </html>
